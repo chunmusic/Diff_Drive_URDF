@@ -1,0 +1,155 @@
+<robot name = "diff_drive" xmlns:xacro = "http://wiki.ros.org/xacro">
+    
+
+    <xacro:macro name = "make_base_link"
+                 params = "name xyz rpy mass width height depth rgba">
+
+        <link name = "${name}">
+            <inertial>
+                <origin xyz = "${xyz}" rpy = "${rpy}"/>
+                <mass value="${mass}"/> 
+                <inertia ixx="${(1/12) * mass * (height * height * depth *depth)}" ixy="0.0" ixz="0.0" 
+                         iyy="${(1/12) * mass * (width * width * depth *depth)}" iyz="0.0" 
+                         izz="${(1/12) * mass * (width * width * height * height)}"/>
+            </inertial>
+            <visual>
+                <origin xyz = "${xyz}" rpy = "${rpy}"/>
+                <geometry>
+                    <box size="${width} ${depth} ${height}"/>
+                </geometry>
+                <material name = "${name}_material">
+                    <color rgba = "${rgba}"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz = "${xyz}" rpy = "${rpy}"/>
+                <geometry>
+                    <box size="${width} ${depth} ${height}"/>
+                </geometry>                
+            </collision>
+        </link>
+        
+    </xacro:macro>
+
+    <xacro:macro name = "make_cylinder_link"
+                 params = "name xyz rpy mass radius length rgba">
+
+        <link name = "${name}">
+            <inertial>
+                <origin xyz = "${xyz}" rpy = "${rpy}"/>
+                <mass value="${mass}"/> 
+                <inertia ixx="${(1/12) * mass * (3 * radius * radius + length * length)}" ixy="0.0" ixz="0.0" 
+                         iyy="${(1/12) * mass * (3 * radius * radius + length * length)}" iyz="0.0" 
+                         izz="${(1/2) * mass * radius * radius}"/>
+            </inertial>
+            <visual>
+                <origin xyz = "${xyz}" rpy = "${rpy}"/>
+                <geometry>
+                    <cylinder radius="${radius}" length="${length}"/>
+                </geometry>
+                <material name = "${name}_material">
+                    <color rgba = "${rgba}"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz = "${xyz}" rpy = "${rpy}"/>
+                <geometry>
+                    <cylinder radius="${radius}" length="${length}"/>
+                </geometry>                
+            </collision>
+        </link>
+
+    </xacro:macro>
+
+
+    <xacro:macro name = "make_continuous_joint"
+                 params = "name xyz rpy parent child axis damping friction">
+        <joint name = "${name}" type = "continuous">
+            <origin xyz = "${xyz}" rpy = "${rpy}"/>
+            <parent link="${parent}"/>
+            <child link="${child}"/>
+            <axis xyz="${axis}"/>
+            <dynamics damping = "${damping}" friction = "${friction}"/>
+        </joint>
+    </xacro:macro>
+
+
+    <xacro:make_base_link name ="base_link"
+                          xyz = "0 0 0"
+                          rpy = "0 0 0"
+                          mass = "0.5"
+                          width = "0.6"
+                          height = "0.1"
+                          depth = "0.4"
+                          rgba = "0.2 0.2 0.2 1.0"/>
+
+    <xacro:make_cylinder_link name = "left_wheel"
+                           xyz = "0 0 0"
+                           rpy = "0 0 0"
+                           mass = "0.1" 
+                           radius = "0.1" 
+                           length = "0.04" 
+                           rgba = "1 0.2 0.2 1.0"/>
+
+    <xacro:make_continuous_joint name = "left_wheel_joint"
+                                 xyz = "-0.1 0.22 0"
+                                 rpy = "0.0 -1.57 -1.57" 
+                                 parent = "base_link" 
+                                 child = "left_wheel" 
+                                 axis = "0 0 1" 
+                                 damping = "0" 
+                                 friction = "0"/>      
+    
+    <xacro:make_cylinder_link name = "right_wheel"
+                           xyz = "0 0 0"
+                           rpy = "0 0 0"
+                           mass = "0.1" 
+                           radius = "0.1" 
+                           length = "0.04" 
+                           rgba = "1 0.2 0.2 1.0"/>
+
+    <xacro:make_continuous_joint name = "right_wheel_joint"
+                                 xyz = "-0.1 -0.22 0"
+                                 rpy = "0.0 -1.57 -1.57" 
+                                 parent = "base_link" 
+                                 child = "right_wheel" 
+                                 axis = "0 0 1" 
+                                 damping = "0" 
+                                 friction = "0"/> 
+
+    <xacro:make_cylinder_link name = "cluster_support"
+                                 xyz = "0 0 0"
+                                 rpy = "0 0 0"
+                                 mass = "0.1" 
+                                 radius = "0.02" 
+                                 length = "0.1" 
+                                 rgba = "0.2 1.0 0.2 1.0"/>
+
+    <xacro:make_continuous_joint name = "cluster_support_joint"
+                                 xyz = "0.32 0 0"
+                                 rpy = "0 0 0"
+                                 parent = "base_link" 
+                                 child = "cluster_support"
+                                 axis = "0 0 1" 
+                                 damping = "0" 
+                                 friction = "0"/> 
+
+    <xacro:make_cylinder_link name = "cluster_wheel"
+                                 xyz = "0 0 0"
+                                 rpy = "0 0 0"
+                                 mass = "0.02" 
+                                 radius = "0.025"
+                                 length = "0.01" 
+                                 rgba = "0.2 0.2 1.0 1.0"/>
+
+    <xacro:make_continuous_joint name = "cluster_wheel_joint"
+                                 xyz = "0 0 -0.075"
+                                 rpy = "0 -1.57 -1.57"
+                                 parent = "cluster_support"
+                                 child = "cluster_wheel"
+                                 axis = "0 0 1" 
+                                 damping = "0" 
+                                 friction = "0"/> 
+
+
+</robot>

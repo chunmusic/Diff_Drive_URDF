@@ -1,0 +1,38 @@
+<launch>
+    
+    <include file = "$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name = "paused" value = "true"/>
+    
+    </include>
+
+    <param name = "robot_description" command = "xacro $(find diff_drive_description)/urdf/diff_drive.urdf.xacro"/>
+
+
+    <node name = "spawn_vehicle" pkg = "gazebo_ros" type = "spawn_model"
+          args = "-param robot_description -urdf -model diff_drive -z 0.1 -R 0"/>
+
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+    </node>
+
+    <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+        <param name="default_topic" value="/Diff_Drive/diff_drive_controller/cmd_vel"/> 
+    </node>
+
+
+
+    <rosparam file="$(find diff_drive_gazebo)/config/joint_states.yaml" command="load"/>
+
+    <rosparam file="$(find diff_drive_gazebo)/config/diff_drive.yaml" command="load"/>
+    
+
+
+    <node name="robot_arm_controller_spawner" pkg="controller_manager" type="spawner"
+    respawn="true" output="screen" 
+     args="/Diff_Drive/joint_state_controller
+           /Diff_Drive/diff_drive_controller
+          --shutdown-timeout 3"/>
+
+
+</launch>

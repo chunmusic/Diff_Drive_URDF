@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/pongsakorn/ws_moveit/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/pongsakorn/ws_moveit/src/moveit/moveit_planners/chomp/chomp_motion_planner/include/**",
+        "/home/pongsakorn/ws_moveit/src/geometric_shapes/include/**",
+        "/home/pongsakorn/ws_moveit/src/moveit/moveit_experimental/moveit_jog_arm/include/**",
+        "/home/pongsakorn/ws_moveit/src/moveit/moveit_planners/chomp/chomp_interface/include/**",
+        "/home/pongsakorn/ws_moveit/src/moveit/moveit_ros/benchmarks/include/**",
+        "/home/pongsakorn/ws_moveit/src/moveit/moveit_plugins/moveit_ros_control_interface/include/**",
+        "/home/pongsakorn/ws_moveit/src/moveit/moveit_ros/move_group/include/**",
+        "/home/pongsakorn/ws_moveit/src/moveit/moveit_ros/occupancy_map_monitor/include/**",
+        "/home/pongsakorn/ws_moveit/src/moveit/moveit_ros/robot_interaction/include/**",
+        "/home/pongsakorn/ws_moveit/src/moveit/moveit_setup_assistant/include/**",
+        "/home/pongsakorn/ws_moveit/src/moveit/moveit_plugins/moveit_simple_controller_manager/include/**",
+        "/home/pongsakorn/ws_moveit/src/moveit_visual_tools/include/**",
+        "/home/pongsakorn/ws_moveit/src/rviz_visual_tools/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ]
+}

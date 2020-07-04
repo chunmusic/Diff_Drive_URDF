@@ -305,8 +305,26 @@ cpp_common_DIR:PATH=/opt/ros/melodic/share/cpp_common/cmake
 //Value Computed by CMake
 diff_drive_description_BINARY_DIR:STATIC=/home/pongsakorn/diff_drive_ws/build/diff_drive_description
 
+//The directory containing a CMake configuration file for diff_drive_description.
+diff_drive_description_DIR:PATH=/home/pongsakorn/diff_drive_ws/devel/share/diff_drive_description/cmake
+
 //Value Computed by CMake
 diff_drive_description_SOURCE_DIR:STATIC=/home/pongsakorn/diff_drive_ws/src/diff_drive_description
+
+//Value Computed by CMake
+diff_drive_gazebo_BINARY_DIR:STATIC=/home/pongsakorn/diff_drive_ws/build/diff_drive_gazebo
+
+//Value Computed by CMake
+diff_drive_gazebo_SOURCE_DIR:STATIC=/home/pongsakorn/diff_drive_ws/src/diff_drive_gazebo
+
+//The directory containing a CMake configuration file for dynamic_reconfigure.
+dynamic_reconfigure_DIR:PATH=/opt/ros/melodic/share/dynamic_reconfigure/cmake
+
+//The directory containing a CMake configuration file for gazebo_msgs.
+gazebo_msgs_DIR:PATH=/opt/ros/melodic/share/gazebo_msgs/cmake
+
+//The directory containing a CMake configuration file for gazebo_ros.
+gazebo_ros_DIR:PATH=/opt/ros/melodic/share/gazebo_ros/cmake
 
 //The directory containing a CMake configuration file for gencpp.
 gencpp_DIR:PATH=/opt/ros/melodic/share/gencpp/cmake
@@ -394,7 +412,7 @@ kdl_parser_DIR:PATH=/opt/ros/melodic/share/kdl_parser/cmake
 laser_geometry_DIR:PATH=/opt/ros/melodic/share/laser_geometry/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/melodic/lib/libresource_retriever.so
+lib:FILEPATH=/opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
 
 //The directory containing a CMake configuration file for map_msgs.
 map_msgs_DIR:PATH=/opt/ros/melodic/share/map_msgs/cmake
@@ -485,6 +503,9 @@ tf2_ros_DIR:PATH=/opt/ros/melodic/share/tf2_ros/cmake
 
 //The directory containing a CMake configuration file for tf.
 tf_DIR:PATH=/opt/ros/melodic/share/tf/cmake
+
+//The directory containing a CMake configuration file for trajectory_msgs.
+trajectory_msgs_DIR:PATH=/opt/ros/melodic/share/trajectory_msgs/cmake
 
 //The directory containing a CMake configuration file for urdf.
 urdf_DIR:PATH=/opt/ros/melodic/share/urdf/cmake
@@ -608,7 +629,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

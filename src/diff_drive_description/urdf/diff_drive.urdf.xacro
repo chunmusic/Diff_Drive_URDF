@@ -194,26 +194,23 @@
                                  friction = "0"/> 
 
 
-    <xacro:make_sphere_link name = "cluster_wheel"
+    <xacro:make_sphere_link name = "caster_wheel"
                                  xyz = "0 0 0"
                                  rpy = "0 0 0"
                                  mass = "0.02" 
                                  radius = "0.05"
                                  rgba = "0.2 0.2 1.0 1.0"/>
 
-    <xacro:make_fixed_joint name = "cluster_wheel_joint"
+    <xacro:make_fixed_joint name = "caster_wheel_joint"
                                  joint_type = "fixed"
                                  xyz = "0.26 0 -0.05"
                                  rpy = "0 0 0"
                                  parent = "base_link"
-                                 child = "cluster_wheel"
+                                 child = "caster_wheel"
                                  damping = "0" 
                                  friction = "0"/>
                                  
 
-
-
-    
     <xacro:macro name = "make_simple_transmission"
                  params = "name 
                            joint

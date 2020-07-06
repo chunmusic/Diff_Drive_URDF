@@ -24,10 +24,10 @@
     <rosparam file="$(find diff_drive_gazebo)/config/joint_states.yaml" command="load"/>
 
     <rosparam file="$(find diff_drive_gazebo)/config/diff_drive.yaml" command="load"/>    
-<!--
+
     <rosparam file="$(find diff_drive_gazebo)/config/pid.yaml" command="load"/>
 
--->
+
     <node name="robot_arm_controller_spawner" pkg="controller_manager" type="spawner"
     respawn="true" output="screen" 
      args="/Diff_Drive/joint_state_controller

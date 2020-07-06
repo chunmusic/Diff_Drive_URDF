@@ -1,7 +1,7 @@
 <launch>
     
     <include file = "$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name = "paused" value = "true"/>
+        <arg name = "paused" value = "false"/>
     
     </include>
 
@@ -9,7 +9,7 @@
 
 
     <node name = "spawn_vehicle" pkg = "gazebo_ros" type = "spawn_model"
-          args = "-param robot_description -urdf -model diff_drive -z 0.1 -R 0"/>
+          args = "-param robot_description -urdf -model diff_drive -z 0.5 -R 0"/>
 
 
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
@@ -21,13 +21,13 @@
     </node>
 
 
-
     <rosparam file="$(find diff_drive_gazebo)/config/joint_states.yaml" command="load"/>
 
-    <rosparam file="$(find diff_drive_gazebo)/config/diff_drive.yaml" command="load"/>
-    
+    <rosparam file="$(find diff_drive_gazebo)/config/diff_drive.yaml" command="load"/>    
+<!--
+    <rosparam file="$(find diff_drive_gazebo)/config/pid.yaml" command="load"/>
 
-
+-->
     <node name="robot_arm_controller_spawner" pkg="controller_manager" type="spawner"
     respawn="true" output="screen" 
      args="/Diff_Drive/joint_state_controller
